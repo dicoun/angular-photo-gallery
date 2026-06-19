@@ -1,1 +1,17 @@
-<p>favorites works!</p>
+<div *ngIf="favoritePhotos().length === 0; else showFavoritesPhotos">
+  <p>No favorites photos</p>
+</div>
+
+<ng-template #showFavoritesPhotos>
+  <mat-grid-list cols="3" rowHeight="1:1" gutterSize="24px">
+    <mat-grid-tile *ngFor="let photo of favoritePhotos(); trackBy: trackById">
+      <div class="tile-block">
+        <img
+          [src]="photo.url"
+          [routerLink]="['/photos', photo.id]"
+          alt="Favorite photo"
+        />
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</ng-template>
