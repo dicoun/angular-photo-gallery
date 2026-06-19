@@ -1,1 +1,10 @@
-<p>gallery works!</p>
+<mat-grid-list [cols]="3" rowHeight="1:1" gutterSize="24px" class="photos-list">
+  <mat-grid-tile
+    *ngFor="let photo of photos(); trackBy: trackById"
+    class="photo-tile"
+  >
+    <div class="tile-blok" (click)="addToFavoritPhotos(photo)">
+      <img [src]="photo.url" alt="Photo {{ photo.id }}" loading="lazy" />
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
