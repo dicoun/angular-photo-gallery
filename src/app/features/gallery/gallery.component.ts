@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { Photo } from 'src/app/core/models/photo.model';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { GalleryService } from 'src/app/services/gallery-service/gallery.service';
 
 @Component({
   selector: 'app-gallery',
@@ -11,22 +12,10 @@ import { MatGridListModule } from '@angular/material/grid-list';
   imports: [CommonModule, MatGridListModule],
 })
 export class GalleryComponent {
-  protected photos = signal<Array<Photo>>([
-    {
-      id: 'url_1',
-      url: 'Test_url_1',
-    },
-    {
-      id: 'url_2',
-      url: 'Test_url_2',
-    },
-    {
-      id: 'url_3',
-      url: 'Test_url_3',
-    },
-  ]);
-
   private isLoading = signal<boolean>(false);
+  private galleryService = inject(GalleryService);
+
+  protected photos = signal<Array<Photo>>([]);
 
   public ngOnInit(): void {
     this.getPhotos();
@@ -44,6 +33,11 @@ export class GalleryComponent {
     if (this.isLoading()) return;
 
     this.isLoading.set(true);
-    //get photos from service
+
+    //get mock photos from galleryService
+    this.galleryService.mockPhotos$.subscribe((photos) => {
+      this.photos.update((curr) => [...curr, ...photos]);
+      this.isLoading.set(false);
+    });
   }
 }
