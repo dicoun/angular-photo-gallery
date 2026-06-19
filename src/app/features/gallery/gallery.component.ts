@@ -3,6 +3,7 @@ import { Component, inject, signal } from '@angular/core';
 import { Photo } from 'src/app/core/models/photo.model';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { GalleryService } from 'src/app/services/gallery-service/gallery.service';
+import { FavoritesService } from 'src/app/services/favorites-service/favorites.service';
 
 @Component({
   selector: 'app-gallery',
@@ -13,7 +14,8 @@ import { GalleryService } from 'src/app/services/gallery-service/gallery.service
 })
 export class GalleryComponent {
   private isLoading = signal<boolean>(false);
-  private galleryService = inject(GalleryService);
+  private readonly galleryService = inject(GalleryService);
+  private readonly favoritesService = inject(FavoritesService);
 
   protected photos = signal<Array<Photo>>([]);
 
@@ -27,6 +29,7 @@ export class GalleryComponent {
 
   protected addToFavoritPhotos(photo: Photo): void {
     //add photo to favorites
+    this.favoritesService.addToFavorites(photo);
   }
 
   private getPhotos(): void {
