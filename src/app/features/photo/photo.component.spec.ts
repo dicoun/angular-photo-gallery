@@ -8,7 +8,7 @@ describe('PhotoComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PhotoComponent]
+      imports: [PhotoComponent],
     });
     fixture = TestBed.createComponent(PhotoComponent);
     component = fixture.componentInstance;
