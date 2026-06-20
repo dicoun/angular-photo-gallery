@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PhotoComponent } from './photo.component';
 import { FavoritesService } from 'src/app/services/favorites-service/favorites.service';
-import { ActivatedRoute } from '@angular/router';
 import { Photo } from 'src/app/core/models/photo.model';
 import { By } from '@angular/platform-browser';
 import { FavoritesComponent } from '../favorites/favorites.component';

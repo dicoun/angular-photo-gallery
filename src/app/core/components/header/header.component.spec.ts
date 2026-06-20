@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Directive } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { By } from '@angular/platform-browser';
 import { FavoritesComponent } from 'src/app/features/favorites/favorites.component';

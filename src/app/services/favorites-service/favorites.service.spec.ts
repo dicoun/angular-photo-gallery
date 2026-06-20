@@ -4,13 +4,57 @@ import { FavoritesService } from './favorites.service';
 
 describe('FavoritesService', () => {
   let service: FavoritesService;
+  const STORAGE_KEY = 'favorites_photos';
+  const photo1 = {
+    id: 'b4e95f75',
+    url: 'https://picsum.photos/id/167/200/300',
+  };
+  const photo2 = {
+    id: '5bef952d',
+    url: 'https://picsum.photos/id/312/200/300',
+  };
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(FavoritesService);
+    localStorage.clear();
+    TestBed.configureTestingModule({
+      providers: [FavoritesService],
+    });
   });
 
   it('should be created', () => {
+    service = TestBed.inject(FavoritesService);
     expect(service).toBeTruthy();
+  });
+
+  it('should get initial data from localStorage', () => {
+    const initial = [photo1];
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(initial));
+    service = TestBed.inject(FavoritesService);
+
+    expect(service.favorites()).toEqual(initial);
+  });
+
+  it('should add photo to favorites', () => {
+    const service = TestBed.inject(FavoritesService);
+    service.addToFavorites(photo1);
+
+    expect(service.favorites()).toEqual([photo1]);
+  });
+
+  it('should not dublicate photo to favorites', () => {
+    const service = TestBed.inject(FavoritesService);
+    service.addToFavorites(photo1);
+    service.addToFavorites(photo1);
+
+    expect(service.favorites().length).toBe(1);
+    expect(service.favorites()).toEqual([photo1]);
+  });
+
+  it('should remove photo from favorites', () => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify([photo1, photo2]));
+    const service = TestBed.inject(FavoritesService);
+    service.deleteFromFavorites(photo1);
+
+    expect(service.favorites()).toEqual([photo2]);
   });
 });
