@@ -1,1 +1,20 @@
-<p>photo works!</p>
+<div *ngIf="currentPhoto() as photo; else loader" class="photo-block">
+  <div class="full-screen-photo-block">
+    <img [src]="photo.url" [alt]="'Photo ' + photo.id" />
+  </div>
+  <button
+    class="remove-button"
+    mat-stroked-button
+    color="primary"
+    (click)="removePhoto()"
+  >
+    Remove from favorites
+  </button>
+</div>
+
+<ng-template #loader>
+  <div class="loading-block">
+    <mat-progress-spinner mode="indeterminate" [diameter]="50" class="spinner">
+    </mat-progress-spinner>
+  </div>
+</ng-template>
