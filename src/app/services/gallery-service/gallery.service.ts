@@ -9,9 +9,10 @@ export class GalleryService {
   public readonly mockPhotos$: Observable<Array<Photo>> = defer(() => {
     const mockArray: Array<Photo> = [];
     for (let i = 0; i < 9; i++) {
+      const id = Math.floor(Math.random() * 500) + 1;
       mockArray.push({
         id: crypto.randomUUID(),
-        url: `https://picsum.photos/200/300?random=${i}`,
+        url: `https://picsum.photos/id/${id}/200/300`,
       });
     }
 
