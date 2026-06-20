@@ -8,3 +8,11 @@
     </div>
   </mat-grid-tile>
 </mat-grid-list>
+<div appInfiniteScroll (infiniteScrollLoad)="getPhotos()" class="spinner-block">
+  <mat-progress-spinner
+    *ngIf="isLoading()"
+    mode="indeterminate"
+    [diameter]="80"
+    class="gallery-spinner"
+  ></mat-progress-spinner>
+</div>

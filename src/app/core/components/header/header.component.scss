@@ -1,22 +1,29 @@
-.header {
-  display: flex;
-  width: 100%;
-  border-bottom: solid white 1px;
+:host {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: black;
 
-  .header-button {
+  .header {
     display: flex;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-    button {
-      color: white;
-      &:hover {
-        font-weight: bold;
-      }
+    width: 100%;
+    border-bottom: solid white 1px;
 
-      &.active {
-        border-bottom: solid red 1px;
+    .header-button {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+      height: 100px;
+      button {
+        color: white;
+        &:hover {
+          font-weight: bold;
+        }
+
+        &.active {
+          border-bottom: solid red 1px;
+        }
       }
     }
   }
