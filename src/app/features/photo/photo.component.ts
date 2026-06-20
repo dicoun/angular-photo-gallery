@@ -29,7 +29,7 @@ export class PhotoComponent {
     return this.favoritesService.favorites().find((p) => p.id === photoId);
   });
 
-  protected removePhoto(): void {
+  public removePhoto(): void {
     const photo = this.currentPhoto();
     if (!photo) return;
 

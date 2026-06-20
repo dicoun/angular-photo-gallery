@@ -12,7 +12,7 @@ describe('FavoritesComponent', () => {
   let component: FavoritesComponent;
   let fixture: ComponentFixture<FavoritesComponent>;
   let mokeFavorites = signal<Photo[]>([]);
-  let data = [
+  const data = [
     {
       id: 'b4e95f75',
       url: 'https://picsum.photos/id/167/200/300',

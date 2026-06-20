@@ -23,8 +23,8 @@ export class GalleryComponent implements OnInit {
   private readonly galleryService = inject(GalleryService);
   private readonly favoritesService = inject(FavoritesService);
 
-  protected readonly isLoading = signal<boolean>(false);
-  protected readonly photos = signal<Array<Photo>>([]);
+  public readonly isLoading = signal<boolean>(false);
+  public readonly photos = signal<Array<Photo>>([]);
 
   public ngOnInit(): void {
     this.getPhotos();
@@ -34,12 +34,12 @@ export class GalleryComponent implements OnInit {
     return photo.id;
   }
 
-  protected addToFavoritPhotos(photo: Photo): void {
+  public addToFavoritesPhotos(photo: Photo): void {
     //add photo to favorites
     this.favoritesService.addToFavorites(photo);
   }
 
-  protected getPhotos(): void {
+  public getPhotos(): void {
     if (this.isLoading()) return;
 
     this.isLoading.set(true);
