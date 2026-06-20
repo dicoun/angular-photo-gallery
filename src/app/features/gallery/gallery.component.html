@@ -3,11 +3,15 @@
     *ngFor="let photo of photos(); trackBy: trackById"
     class="photo-tile"
   >
-    <div class="tile-blok" (click)="addToFavoritPhotos(photo)">
-      <img [src]="photo.url" alt="Photo {{ photo.id }}" loading="lazy" />
-    </div>
+    <img
+      [src]="photo.url"
+      alt="Photo {{ photo.id }}"
+      loading="lazy"
+      (click)="addToFavoritPhotos(photo)"
+    />
   </mat-grid-tile>
 </mat-grid-list>
+
 <div appInfiniteScroll (infiniteScrollLoad)="getPhotos()" class="spinner-block">
   <mat-progress-spinner
     *ngIf="isLoading()"

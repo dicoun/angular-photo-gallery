@@ -23,8 +23,8 @@ export class GalleryComponent implements OnInit {
   private readonly galleryService = inject(GalleryService);
   private readonly favoritesService = inject(FavoritesService);
 
-  protected isLoading = signal<boolean>(false);
-  protected photos = signal<Array<Photo>>([]);
+  protected readonly isLoading = signal<boolean>(false);
+  protected readonly photos = signal<Array<Photo>>([]);
 
   public ngOnInit(): void {
     this.getPhotos();

@@ -6,7 +6,7 @@ import { Photo } from 'src/app/core/models/photo.model';
   providedIn: 'root',
 })
 export class GalleryService {
-  public readonly mockPhotos$: Observable<Array<Photo>> = defer(() => {
+  public mockPhotos$: Observable<Array<Photo>> = defer(() => {
     const mockArray: Array<Photo> = [];
     for (let i = 0; i < 9; i++) {
       const id = Math.floor(Math.random() * 500) + 1;

@@ -6,7 +6,9 @@ import { Photo } from 'src/app/core/models/photo.model';
 })
 export class FavoritesService {
   private readonly STORAGE_KEY = 'favorites_photos';
-  private favoritesState = signal<Photo[]>(this.loadFromLocalStorage());
+  private readonly favoritesState = signal<Photo[]>(
+    this.loadFromLocalStorage(),
+  );
 
   public readonly favorites = this.favoritesState.asReadonly();
 
