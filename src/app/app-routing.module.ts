@@ -32,7 +32,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true })],
+  imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true })], //binds route parameters to component's @Input properties
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

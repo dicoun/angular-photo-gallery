@@ -2,12 +2,7 @@
   <div class="full-screen-photo-block">
     <img [src]="photo.url" [alt]="'Photo ' + photo.id" />
   </div>
-  <button
-    class="remove-button"
-    mat-stroked-button
-    color="primary"
-    (click)="removePhoto()"
-  >
+  <button class="remove-button" mat-stroked-button (click)="removePhoto()">
     Remove from favorites
   </button>
 </div>

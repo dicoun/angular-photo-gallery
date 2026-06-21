@@ -33,6 +33,7 @@ export class PhotoComponent {
     const photo = this.currentPhoto();
     if (!photo) return;
 
+    //remove photo from favorites
     this.favoritesService.deleteFromFavorites(photo);
     this.router.navigate(['/favorites']);
   }
