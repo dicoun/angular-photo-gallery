@@ -1,16 +1,24 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { Photo } from 'src/app/core/models/photo.model';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { GalleryService } from 'src/app/services/gallery-service/gallery.service';
 import { FavoritesService } from 'src/app/services/favorites-service/favorites.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { InfiniteScrollDirective } from 'src/app/shared/directives/infinite-scroll/infinite-scroll.directive';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
     CommonModule,
@@ -45,12 +53,15 @@ export class GalleryComponent implements OnInit {
     this.isLoading.set(true);
 
     //get mock photos from galleryService
-    this.galleryService.mockPhotos$.subscribe({
-      next: (photos) => {
-        this.photos.update((curr) => [...curr, ...photos]);
-        this.isLoading.set(false);
-      },
-      error: () => this.isLoading.set(false),
-    });
+    this.galleryService.mockPhotos$
+      //unsubscribe when get first value
+      .pipe(take(1))
+      .subscribe({
+        next: (photos) => {
+          this.photos.update((curr) => [...curr, ...photos]);
+          this.isLoading.set(false);
+        },
+        error: () => this.isLoading.set(false),
+      });
   }
 }
