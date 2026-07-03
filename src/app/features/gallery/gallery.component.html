@@ -7,6 +7,7 @@
       [src]="getThumbnailUrl(photo.id)"
       alt="Photo {{ photo.id }}"
       loading="lazy"
+      [class.photo-added]="isJustAdded(photo.id)"
       (click)="addToFavoritesPhotos(photo)"
     />
   </mat-grid-tile>

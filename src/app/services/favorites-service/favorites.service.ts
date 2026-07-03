@@ -22,11 +22,12 @@ export class FavoritesService {
     });
   }
   //add photo to favorites when user clicks on the photo in gallery
-  public addToFavorites(photo: Photo): void {
+  public addToFavorites(photo: Photo): boolean {
     const isInFavorites = this.favoritesState().some((p) => p.id === photo.id);
-    if (isInFavorites) return;
+    if (isInFavorites) return false;
 
     this.favoritesState.update((photos) => [photo, ...photos]);
+    return true;
   }
   //remove photo from favorites when user clicks on Remove from favorites button
   public deleteFromFavorites(photo: Photo): void {

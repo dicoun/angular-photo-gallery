@@ -30,15 +30,16 @@ describe('FavoritesService', () => {
 
   it('should add photo to favorites', () => {
     const service = TestBed.inject(FavoritesService);
-    service.addToFavorites(photo1);
 
+    expect(service.addToFavorites(photo1)).toBeTrue();
     expect(service.favorites()).toEqual([photo1]);
   });
 
   it('should not dublicate photo to favorites', () => {
     const service = TestBed.inject(FavoritesService);
-    service.addToFavorites(photo1);
-    service.addToFavorites(photo1);
+
+    expect(service.addToFavorites(photo1)).toBeTrue();
+    expect(service.addToFavorites(photo1)).toBeFalse();
 
     expect(service.favorites().length).toBe(1);
     expect(service.favorites()).toEqual([photo1]);
