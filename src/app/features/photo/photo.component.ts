@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
 import { Photo } from 'src/app/core/models/photo.model';
 import { buildFullSizeUrl } from 'src/app/core/utils/photo-url.util';
 import { FavoritesService } from 'src/app/services/favorites-service/favorites.service';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-photo',
@@ -20,7 +19,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   styleUrls: ['./photo.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatProgressSpinnerModule],
+  imports: [CommonModule, MatButtonModule],
 })
 export class PhotoComponent {
   private readonly router = inject(Router);
@@ -37,6 +36,8 @@ export class PhotoComponent {
 
     return this.favoritesService.favorites().find((p) => p.id === photoId);
   });
+
+  protected readonly isNotFound = computed(() => !this.currentPhoto());
 
   protected getFullSizeUrl(id: string): string {
     return buildFullSizeUrl(id);

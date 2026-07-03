@@ -1,4 +1,4 @@
-<div *ngIf="currentPhoto() as photo; else loader" class="photo-block">
+<div *ngIf="currentPhoto() as photo" class="photo-block">
   <div class="full-screen-photo-block">
     <img [src]="getFullSizeUrl(photo.id)" [alt]="'Photo ' + photo.id" />
   </div>
@@ -7,13 +7,6 @@
   </button>
 </div>
 
-<ng-template #loader>
-  <div class="loading-block">
-    <mat-progress-spinner
-      mode="indeterminate"
-      [diameter]="80"
-      class="photo-spinner"
-    >
-    </mat-progress-spinner>
-  </div>
-</ng-template>
+<div *ngIf="isNotFound()" class="not-found-block">
+  <p>Photo not found</p>
+</div>

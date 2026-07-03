@@ -41,11 +41,13 @@ describe('PhotoComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should show loader when no photo', () => {
-    component.id = '';
-    const spinner = fixture.debugElement.query(By.css('mat-progress-spinner'));
+  it('should show not found message when photo id is invalid', () => {
+    component.id = 'invalid-id';
+    fixture.detectChanges();
 
-    expect(spinner).toBeTruthy();
+    const notFound = fixture.debugElement.query(By.css('.not-found-block'));
+    expect(notFound).toBeTruthy();
+    expect(notFound.nativeElement.textContent).toContain('Photo not found');
 
     const photo = fixture.debugElement.query(By.css('.photo-block'));
     expect(photo).toBeNull();
@@ -58,6 +60,9 @@ describe('PhotoComponent', () => {
 
     const spinner = fixture.debugElement.query(By.css('mat-progress-spinner'));
     expect(spinner).toBeNull();
+
+    const notFound = fixture.debugElement.query(By.css('.not-found-block'));
+    expect(notFound).toBeNull();
 
     const photo = fixture.debugElement.query(By.css('.photo-block'));
     expect(photo).toBeTruthy();

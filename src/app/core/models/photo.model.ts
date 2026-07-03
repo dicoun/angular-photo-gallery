@@ -1,3 +1,3 @@
-export interface Photo {
-  id: string;
-}
+export interface Photo {
+  id: string;
+}
