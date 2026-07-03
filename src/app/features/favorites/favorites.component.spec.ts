@@ -5,6 +5,7 @@ import { FavoritesService } from 'src/app/services/favorites-service/favorites.s
 import { signal } from '@angular/core';
 import { Photo } from 'src/app/core/models/photo.model';
 import { RouterTestingModule } from '@angular/router/testing';
+import { buildThumbnailUrl } from 'src/app/core/utils/photo-url.util';
 import { By } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
 
@@ -12,16 +13,7 @@ describe('FavoritesComponent', () => {
   let component: FavoritesComponent;
   let fixture: ComponentFixture<FavoritesComponent>;
   let mokeFavorites = signal<Photo[]>([]);
-  const data = [
-    {
-      id: 'b4e95f75',
-      url: 'https://picsum.photos/id/167/200/300',
-    },
-    {
-      id: '5bef952d',
-      url: 'https://picsum.photos/id/312/200/300',
-    },
-  ];
+  const data = [{ id: 'b4e95f75' }, { id: '5bef952d' }];
 
   beforeEach(() => {
     mokeFavorites.set([]);
@@ -63,7 +55,7 @@ describe('FavoritesComponent', () => {
     const images = fixture.nativeElement.querySelectorAll('img');
 
     expect(images.length).toBe(2);
-    expect(images[0].src).toContain('https://picsum.photos/id/167/200/300');
+    expect(images[0].src).toContain(buildThumbnailUrl('b4e95f75'));
     expect(fixture.nativeElement.textContent).not.toContain(
       'No favorites photos',
     );

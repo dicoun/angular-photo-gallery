@@ -4,6 +4,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { RouterModule } from '@angular/router';
 import { Photo } from 'src/app/core/models/photo.model';
 import { FavoritesService } from 'src/app/services/favorites-service/favorites.service';
+import { buildThumbnailUrl } from 'src/app/core/utils/photo-url.util';
 
 @Component({
   selector: 'app-favorites',
@@ -19,5 +20,9 @@ export class FavoritesComponent {
 
   protected trackById(_: number, photo: Photo): string {
     return photo.id;
+  }
+
+  protected getThumbnailUrl(id: string): string {
+    return buildThumbnailUrl(id);
   }
 }

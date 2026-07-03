@@ -4,7 +4,7 @@
     class="photo-tile"
   >
     <img
-      [src]="photo.url"
+      [src]="getThumbnailUrl(photo.id)"
       alt="Photo {{ photo.id }}"
       loading="lazy"
       (click)="addToFavoritesPhotos(photo)"

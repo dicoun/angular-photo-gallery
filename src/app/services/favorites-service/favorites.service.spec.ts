@@ -5,14 +5,8 @@ import { FavoritesService } from './favorites.service';
 describe('FavoritesService', () => {
   let service: FavoritesService;
   const STORAGE_KEY = 'favorites_photos';
-  const photo1 = {
-    id: 'b4e95f75',
-    url: 'https://picsum.photos/id/167/200/300',
-  };
-  const photo2 = {
-    id: '5bef952d',
-    url: 'https://picsum.photos/id/312/200/300',
-  };
+  const photo1 = { id: 'b4e95f75' };
+  const photo2 = { id: '5bef952d' };
 
   beforeEach(() => {
     localStorage.clear();

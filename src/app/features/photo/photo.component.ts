@@ -10,6 +10,7 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { Photo } from 'src/app/core/models/photo.model';
+import { buildFullSizeUrl } from 'src/app/core/utils/photo-url.util';
 import { FavoritesService } from 'src/app/services/favorites-service/favorites.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
@@ -36,6 +37,10 @@ export class PhotoComponent {
 
     return this.favoritesService.favorites().find((p) => p.id === photoId);
   });
+
+  protected getFullSizeUrl(id: string): string {
+    return buildFullSizeUrl(id);
+  }
 
   public removePhoto(): void {
     const photo = this.currentPhoto();

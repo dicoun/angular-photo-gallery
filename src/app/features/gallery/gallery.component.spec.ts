@@ -10,21 +10,13 @@ import { of } from 'rxjs';
 import { InfiniteScrollDirective } from 'src/app/shared/directives/infinite-scroll/infinite-scroll.directive';
 import { GalleryService } from 'src/app/services/gallery-service/gallery.service';
 import { FavoritesService } from 'src/app/services/favorites-service/favorites.service';
+import { buildThumbnailUrl } from 'src/app/core/utils/photo-url.util';
 import { By } from '@angular/platform-browser';
 
 describe('GalleryComponent', () => {
   let component: GalleryComponent;
   let fixture: ComponentFixture<GalleryComponent>;
-  const data = [
-    {
-      id: 'b4e95f75',
-      url: 'https://picsum.photos/id/167/200/300',
-    },
-    {
-      id: '5bef952d',
-      url: 'https://picsum.photos/id/312/200/300',
-    },
-  ];
+  const data = [{ id: 'b4e95f75' }, { id: '5bef952d' }];
 
   const mockGalleryService = {
     mockPhotos$: of(data),
@@ -58,7 +50,7 @@ describe('GalleryComponent', () => {
 
     expect(images.length).toBe(2);
     expect(images[0].nativeElement.src).toContain(
-      'https://picsum.photos/id/167/200/300',
+      buildThumbnailUrl('b4e95f75'),
     );
   });
 

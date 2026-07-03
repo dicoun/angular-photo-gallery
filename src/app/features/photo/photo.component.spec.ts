@@ -52,12 +52,7 @@ describe('PhotoComponent', () => {
   });
 
   it('should render photo and button when photo exist', () => {
-    favoritesList = [
-      {
-        id: 'b4e95f75',
-        url: 'https://picsum.photos/id/167/200/300',
-      },
-    ];
+    favoritesList = [{ id: 'b4e95f75' }];
     component.id = 'b4e95f75';
     fixture.detectChanges();
 
@@ -72,10 +67,7 @@ describe('PhotoComponent', () => {
   });
 
   it('should call removePhoto method when button is clicked', () => {
-    const photo = {
-      id: 'b4e95f75',
-      url: 'https://picsum.photos/id/167/200/300',
-    };
+    const photo = { id: 'b4e95f75' };
     favoritesList = [photo];
     component.id = 'b4e95f75';
     fixture.detectChanges();

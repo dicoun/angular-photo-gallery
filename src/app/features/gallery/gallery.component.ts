@@ -12,6 +12,7 @@ import { GalleryService } from 'src/app/services/gallery-service/gallery.service
 import { FavoritesService } from 'src/app/services/favorites-service/favorites.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { InfiniteScrollDirective } from 'src/app/shared/directives/infinite-scroll/infinite-scroll.directive';
+import { buildThumbnailUrl } from 'src/app/core/utils/photo-url.util';
 import { take } from 'rxjs';
 
 @Component({
@@ -40,6 +41,10 @@ export class GalleryComponent implements OnInit {
 
   protected trackById(_: number, photo: Photo): string {
     return photo.id;
+  }
+
+  protected getThumbnailUrl(id: string): string {
+    return buildThumbnailUrl(id);
   }
 
   public addToFavoritesPhotos(photo: Photo): void {

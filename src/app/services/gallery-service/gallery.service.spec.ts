@@ -1,7 +1,7 @@
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { Photo } from 'src/app/core/models/photo.model';
 
 import { GalleryService } from './gallery.service';
-import { Photo } from 'src/app/core/models/photo.model';
 
 describe('GalleryService', () => {
   let service: GalleryService;
@@ -23,11 +23,9 @@ describe('GalleryService', () => {
       allPhotos = photos;
     });
     tick(300);
-    expect(allPhotos.length).toBe(9);
 
-    const firstPhoto = allPhotos[0];
-    expect(firstPhoto.id).toBeTruthy();
-    expect(firstPhoto.url).toContain('https://picsum.photos/id');
+    expect(allPhotos.length).toBe(9);
+    expect(allPhotos[0].id).toBeTruthy();
   }));
 
   it('should be delay befor emit photos', fakeAsync(() => {
@@ -35,6 +33,7 @@ describe('GalleryService', () => {
     service.mockPhotos$.subscribe(() => {
       isEmited = true;
     });
+
     tick(150);
     expect(isEmited).toBeFalse();
 

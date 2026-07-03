@@ -11,7 +11,7 @@
   >
     <mat-grid-tile *ngFor="let photo of favoritePhotos(); trackBy: trackById">
       <img
-        [src]="photo.url"
+        [src]="getThumbnailUrl(photo.id)"
         [routerLink]="['/photos', photo.id]"
         alt="Favorite photo"
       />
