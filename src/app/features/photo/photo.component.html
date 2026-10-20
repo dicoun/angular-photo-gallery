@@ -1,12 +1,16 @@
-<div *ngIf="currentPhoto() as photo" class="photo-block">
-  <div class="full-screen-photo-block">
-    <img [src]="getFullSizeUrl(photo.id)" [alt]="'Photo ' + photo.id" />
+@if (currentPhoto(); as photo) {
+  <div class="photo-block">
+    <div class="full-screen-photo-block">
+      <img [src]="getFullSizeUrl(photo.id)" [alt]="'Photo ' + photo.id" />
+    </div>
+    <button class="remove-button" mat-stroked-button (click)="removePhoto()">
+      Remove from favorites
+    </button>
   </div>
-  <button class="remove-button" mat-stroked-button (click)="removePhoto()">
-    Remove from favorites
-  </button>
-</div>
+}
 
-<div *ngIf="isNotFound()" class="not-found-block">
-  <p>Photo not found</p>
-</div>
+@if (isNotFound()) {
+  <div class="not-found-block">
+    <p>Photo not found</p>
+  </div>
+}

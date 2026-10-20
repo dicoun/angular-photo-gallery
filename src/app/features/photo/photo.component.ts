@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   ChangeDetectionStrategy,
   Component,
@@ -14,12 +14,11 @@ import { buildFullSizeUrl } from 'src/app/core/utils/photo-url.util';
 import { FavoritesService } from 'src/app/services/favorites-service/favorites.service';
 
 @Component({
-  selector: 'app-photo',
-  templateUrl: './photo.component.html',
-  styleUrls: ['./photo.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, MatButtonModule],
+    selector: 'app-photo',
+    templateUrl: './photo.component.html',
+    styleUrls: ['./photo.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [MatButtonModule]
 })
 export class PhotoComponent {
   private readonly router = inject(Router);

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   ChangeDetectionStrategy,
   Component,
@@ -18,17 +18,15 @@ import { buildThumbnailUrl } from 'src/app/core/utils/photo-url.util';
 import { take } from 'rxjs';
 
 @Component({
-  selector: 'app-gallery',
-  templateUrl: './gallery.component.html',
-  styleUrls: ['./gallery.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    CommonModule,
+    selector: 'app-gallery',
+    templateUrl: './gallery.component.html',
+    styleUrls: ['./gallery.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
     MatGridListModule,
     MatProgressSpinnerModule,
-    InfiniteScrollDirective,
-  ],
+    InfiniteScrollDirective
+]
 })
 export class GalleryComponent implements OnInit, OnDestroy {
   private readonly galleryService = inject(GalleryService);

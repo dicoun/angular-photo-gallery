@@ -13,7 +13,7 @@ An interactive, fully responsive Photo Gallery application featuring an infinite
 
 ## Architecture & Technical Stack
 
-- **Framework**: Angular 16.1.8 (Standalone Components, Signals API)
+- **Framework**: Angular 22.2.3 (Standalone Components, Signals API)
 - **State Management**: Reactive State using `signal()`, `computed()`, and `effect()`
 - **Routing**: Angular Router for page navigation (`/`, `/favorites`, `/photos/:id`)
 - **Styling**: SCSS with CSS Grid and Flexbox integrated with Angular Material components for robust responsiveness

@@ -1,23 +1,25 @@
 <mat-grid-list [cols]="3" rowHeight="1:1" gutterSize="24px" class="photos-list">
-  <mat-grid-tile
-    *ngFor="let photo of photos(); trackBy: trackById"
-    class="photo-tile"
-  >
-    <img
-      [src]="getThumbnailUrl(photo.id)"
-      alt="Photo {{ photo.id }}"
-      loading="lazy"
-      [class.photo-added]="isJustAdded(photo.id)"
-      (click)="addToFavoritesPhotos(photo)"
-    />
-  </mat-grid-tile>
+  @for (photo of photos(); track trackById($index, photo)) {
+    <mat-grid-tile
+      class="photo-tile"
+      >
+      <img
+        [src]="getThumbnailUrl(photo.id)"
+        alt="Photo {{ photo.id }}"
+        loading="lazy"
+        [class.photo-added]="isJustAdded(photo.id)"
+        (click)="addToFavoritesPhotos(photo)"
+        />
+    </mat-grid-tile>
+  }
 </mat-grid-list>
 
 <div appInfiniteScroll (infiniteScrollLoad)="getPhotos()" class="spinner-block">
-  <mat-progress-spinner
-    *ngIf="isLoading()"
-    mode="indeterminate"
-    [diameter]="80"
-    class="gallery-spinner"
-  ></mat-progress-spinner>
+  @if (isLoading()) {
+    <mat-progress-spinner
+      mode="indeterminate"
+      [diameter]="80"
+      class="gallery-spinner"
+    ></mat-progress-spinner>
+  }
 </div>

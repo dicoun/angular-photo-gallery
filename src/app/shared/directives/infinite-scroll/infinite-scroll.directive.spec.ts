@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { InfiniteScrollDirective } from './infinite-scroll.directive';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 @Component({
-  template: `<div appInfiniteScroll (infiniteScrollLoad)="onLoad()"></div>`,
-  standalone: true,
-  imports: [InfiniteScrollDirective],
+    template: `<div appInfiniteScroll (infiniteScrollLoad)="onLoad()"></div>`,
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [InfiniteScrollDirective]
 })
 class TestComponent {
   onLoad() {}

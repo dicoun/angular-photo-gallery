@@ -68,11 +68,8 @@ describe('FavoritesComponent', () => {
 
     expect(element).toBeTruthy();
 
-    const routerLink = element.nativeElement.getAttribute(
-      'ng-reflect-router-link',
-    );
+    const routerLink = element.injector.get(RouterLink).urlTree?.toString();
 
-    expect(routerLink).toContain('/photos');
-    expect(routerLink).toContain('b4e95f75');
+    expect(routerLink).toContain('/photos/b4e95f75');
   });
 });

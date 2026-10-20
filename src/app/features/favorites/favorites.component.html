@@ -1,20 +1,23 @@
-<p *ngIf="!favoritePhotos().length; else showFavoritesPhotos">
-  No favorites photos
-</p>
-
-<ng-template #showFavoritesPhotos>
+@if (!favoritePhotos().length) {
+  <p>
+    No favorites photos
+  </p>
+} @else {
   <mat-grid-list
     cols="3"
     rowHeight="1:1"
     gutterSize="24px"
     class="favorites-list"
-  >
-    <mat-grid-tile *ngFor="let photo of favoritePhotos(); trackBy: trackById">
-      <img
-        [src]="getThumbnailUrl(photo.id)"
-        [routerLink]="['/photos', photo.id]"
-        alt="Favorite photo"
-      />
-    </mat-grid-tile>
+    >
+    @for (photo of favoritePhotos(); track trackById($index, photo)) {
+      <mat-grid-tile>
+        <img
+          [src]="getThumbnailUrl(photo.id)"
+          [routerLink]="['/photos', photo.id]"
+          alt="Favorite photo"
+          />
+      </mat-grid-tile>
+    }
   </mat-grid-list>
-</ng-template>
+}
+
