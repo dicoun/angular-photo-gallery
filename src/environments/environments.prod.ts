@@ -2,8 +2,8 @@ export const environment = {
   production: true,
   photoApi: {
     baseUrl: 'https://picsum.photos',
-    thumbnailWidth: 200,
-    thumbnailHeight: 300,
+    thumbnailWidth: 800,
+    thumbnailHeight: 800,
     fullWidth: 1200,
     fullHeight: 800,
   },
