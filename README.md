@@ -26,26 +26,26 @@ Follow these steps to run and explore the project locally.
 
 ### Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ### Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `npx ng generate component component-name` to generate a new component. You can also use `npx ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ### Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ### Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `npm test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 ### CI/CD
 
 GitHub Actions (`.github/workflows/ci-cd.yml`) runs three stages:
 
 1. **Test** on every pull request and every push to `main`.
-2. **Build** the production bundle after tests pass and uploads it as an artifact.
+2. **Build** the production bundle with `npm run build` after tests pass and uploads it as an artifact.
 3. **Deploy** that artifact to Cloudflare Workers on push to `main` only. Angular routes are served as a single-page application (`wrangler.jsonc`).
 
 The deploy stage reads these GitHub repository secrets:
