@@ -3,8 +3,8 @@ export const environment = {
   photoApi: {
     baseUrl: 'https://picsum.photos',
     //  for gallery component
-    thumbnailWidth: 200,
-    thumbnailHeight: 300,
+    thumbnailWidth: 800,
+    thumbnailHeight: 800,
     // for photo component
     fullWidth: 1200,
     fullHeight: 800,
