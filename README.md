@@ -40,6 +40,19 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
+### CI/CD
+
+GitHub Actions (`.github/workflows/ci-cd.yml`) runs three stages:
+
+1. **Test** on every pull request and every push to `main`.
+2. **Build** the production bundle after tests pass and uploads it as an artifact.
+3. **Deploy** that artifact to Cloudflare Workers on push to `main` only. Angular routes are served as a single-page application (`wrangler.jsonc`).
+
+The deploy stage reads these GitHub repository secrets:
+
+- `CLOUDFLARE_API_TOKEN` — API token with the **Edit Cloudflare Workers** template
+- `CLOUDFLARE_ACCOUNT_ID` — Cloudflare account ID
+
 ### Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
